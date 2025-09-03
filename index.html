@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Missão Aniversário: Guilherme faz 4 Anos!</title>
+    <title>Missão Aniversário: Guiguito faz 4 Anos!</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -85,17 +85,17 @@
                     <div class="card p-6">
                         <span class="text-5xl">📅</span>
                         <h4 class="text-xl font-bold text-gray-800 mt-4">Data</h4>
-                        <p class="text-lg text-gray-600 mt-2">15 de Setembro de 2025<br><span class="text-md">(terça-feira)</span></p>
+                        <p class="text-lg text-gray-600 mt-2">04 de Outubro de 2025<br><span class="text-md">(Sábado)</span></p>
                     </div>
                     <div class="card p-6">
                         <span class="text-5xl">⏰</span>
                         <h4 class="text-xl font-bold text-gray-800 mt-4">Hora</h4>
-                        <p class="text-lg text-gray-600 mt-2">A partir das 19h</p>
+                        <p class="text-lg text-gray-600 mt-2">A partir das 13h</p>
                     </div>
                     <div class="card p-6">
                         <span class="text-5xl">📍</span>
                         <h4 class="text-xl font-bold text-gray-800 mt-4">Local</h4>
-                        <p class="text-lg text-gray-600 mt-2">Rua das Flores, 123<br>Campinas</p>
+                        <p class="text-lg text-gray-600 mt-2">Buffet Macafolia - Av. Mirandópolis, 581<br>Campinas</p>
                          <button onclick="openMap()" class="mt-4 bg-patrol-yellow text-gray-800 font-bold py-2 px-4 rounded-lg shadow-md hover:bg-yellow-400 transition-colors">Ver no Mapa</button>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
     </div>
 
     <script>
-        const partyDate = new Date('2025-09-15T19:00:00').getTime();
+        const partyDate = new Date('2025-10-03T13:00:00').getTime();
 
         const countdownInterval = setInterval(() => {
             const now = new Date().getTime();
@@ -147,29 +147,16 @@
         }, 1000);
 
         function openMap() {
-            const address = 'Rua das Flores, 123, Campinas, SP';
+            const address = 'Av. Mirandópolis, 581 - Vila Pompéia, Campinas - SP, 13050-470';
             window.open(`https://www.google.com/maps?q=${encodeURIComponent(address)}`, '_blank');
         }
 
-        const rsvpButton = document.getElementById('rsvp-button');
+         const rsvpButton = document.getElementById('rsvp-button');
         rsvpButton.addEventListener('click', () => {
-            const phoneNumber = '19999999999';
-            const textArea = document.createElement('textarea');
-            textArea.value = phoneNumber;
-            document.body.appendChild(textArea);
-            textArea.select();
-            try {
-                document.execCommand('copy');
-                const copyMessage = document.getElementById('copy-message');
-                copyMessage.style.opacity = '1';
-                setTimeout(() => {
-                    copyMessage.style.opacity = '0';
-                }, 3000);
-            } catch (err) {
-                console.error('Não foi possível copiar o número: ', err);
-                alert('Não foi possível copiar. Por favor, copie o número manualmente: (19) 99999-9999');
-            }
-            document.body.removeChild(textArea);
+            const phoneNumber = '551992058594';
+            const message = 'Olá! Gostaria de confirmar a minha presença na missão de aniversário do Guiguito.';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
         });
     </script>
 </body>
