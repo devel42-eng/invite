@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missão Aniversário: Guilherme faz 4 Anos!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Patrol Pups Palette -->
+    <!-- Application Structure Plan: The application is structured as a single-page, scrollable interactive invitation card. It begins with a fun, themed Hero section, followed by a "Mission Briefing" presenting the party details (Date, Time, Location). It includes a visual map link, a section for the birthday boy, a clear RSVP call-to-action, and a live countdown timer. This structure was chosen to make the simple information engaging and easy to follow, fitting the fun theme of a child's birthday rather than a formal report layout, thus enhancing user experience and excitement. -->
+    <!-- Visualization & Content Choices: 
+        - Party Slogan -> Goal: Engage -> Presentation: Hero section with large, themed text -> Interaction: Subtle CSS animations. Justification: Grabs attention immediately.
+        - Party Details (Date, Time, Place) -> Goal: Inform -> Presentation: Themed "Mission Briefing" cards with Unicode icons -> Interaction: Hover effects. Justification: Organizes key information clearly and thematically.
+        - Countdown -> Goal: Create Urgency/Excitement -> Presentation: Dynamic digital clock display -> Interaction: Updates every second via JavaScript. Justification: Builds anticipation for the event.
+        - Location -> Goal: Inform -> Presentation: A styled map placeholder with a button -> Interaction: Button opens the address in Google Maps. Justification: Provides easy access to directions.
+        - RSVP -> Goal: Action -> Presentation: A prominent button with clear instructions -> Interaction: On click, copies the phone number to the clipboard and shows a confirmation message. Justification: Simplifies the RSVP process for the user.
+        - Library/Method: Vanilla JS for interactions, Tailwind CSS for styling. No charts are needed as there is no quantitative data to visualize. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f0f6ff;
+        }
+        .paw-print-bg {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 100 100'%3E%3Cpath d='M22.5,42.5 C22.5,42.5 12.5,40 10,50 C7.5,60 15,70 20,70 C25,70 30,62.5 30,57.5 C30,52.5 22.5,42.5 22.5,42.5 Z M42.5,25 C42.5,25 35,20 30,30 C25,40 32.5,50 37.5,50 C42.5,50 50,42.5 50,37.5 C50,32.5 42.5,25 42.5,25 Z M62.5,25 C62.5,25 55,20 50,30 C45,40 52.5,50 57.5,50 C62.5,50 70,42.5 70,37.5 C70,32.5 62.5,25 62.5,25 Z M82.5,42.5 C82.5,42.5 72.5,40 70,50 C67.5,60 75,70 80,70 C85,70 90,62.5 90,57.5 C90,52.5 82.5,42.5 82.5,42.5 Z M50,55 C50,55 35,60 35,75 C35,90 45,95 50,95 C55,95 65,90 65,75 C65,60 50,55 50,55 Z' fill='%23005eb8' fill-opacity='0.05'/%3E%3C/svg%3E");
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .countdown-box {
+            background: #0072c6;
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            min-width: 80px;
+        }
+        .patrol-blue { color: #0072c6; }
+        .patrol-red { color: #e51c24; }
+        .patrol-yellow { color: #ffc107; }
+        .bg-patrol-blue { background-color: #0072c6; }
+        .bg-patrol-red { background-color: #e51c24; }
+        .bg-patrol-yellow { background-color: #ffc107; }
+
+        @keyframes bounce-in {
+            0% { transform: scale(0.5); opacity: 0; }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-bounce-in {
+            animation: bounce-in 0.8s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="paw-print-bg">
+
+    <div class="container mx-auto max-w-4xl p-4 sm:p-8">
+        
+        <header class="text-center my-8 animate-bounce-in">
+            <h2 class="text-2xl sm:text-3xl font-bold patrol-red text-shadow">Missão de Aniversário</h2>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black patrol-blue text-shadow my-2">Patrulha Canina em Ação!</h1>
+        </header>
+
+        <main>
+            <section class="card p-6 sm:p-8 text-center text-gray-700 text-lg">
+                <p class="font-bold text-xl patrol-blue">Chamando todos os amigos!</p>
+                <p class="mt-4">O nosso patrulheiro <strong class="patrol-red text-2xl">Guilherme</strong> vai fazer <strong class="patrol-red text-2xl">4 anos</strong> e precisa da sua ajuda para uma missão super especial: celebrar seu aniversário!</p>
+                <p class="mt-2">Junte-se à Patrulha para comer, brincar e se divertir muito!</p>
+            </section>
+            
+            <section class="my-12">
+                <h3 class="text-center text-3xl font-bold patrol-blue mb-6"> Briefing da Missão </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="card p-6">
+                        <span class="text-5xl">📅</span>
+                        <h4 class="text-xl font-bold text-gray-800 mt-4">Data</h4>
+                        <p class="text-lg text-gray-600 mt-2">15 de Setembro de 2025<br><span class="text-md">(terça-feira)</span></p>
+                    </div>
+                    <div class="card p-6">
+                        <span class="text-5xl">⏰</span>
+                        <h4 class="text-xl font-bold text-gray-800 mt-4">Hora</h4>
+                        <p class="text-lg text-gray-600 mt-2">A partir das 19h</p>
+                    </div>
+                    <div class="card p-6">
+                        <span class="text-5xl">📍</span>
+                        <h4 class="text-xl font-bold text-gray-800 mt-4">Local</h4>
+                        <p class="text-lg text-gray-600 mt-2">Rua das Flores, 123<br>Campinas</p>
+                         <button onclick="openMap()" class="mt-4 bg-patrol-yellow text-gray-800 font-bold py-2 px-4 rounded-lg shadow-md hover:bg-yellow-400 transition-colors">Ver no Mapa</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="my-12 text-center">
+                 <h3 class="text-center text-3xl font-bold patrol-blue mb-6"> Contagem Regressiva </h3>
+                 <div id="countdown" class="flex justify-center items-center gap-2 sm:gap-4 text-center">
+                    <div class="countdown-box"><span id="days" class="text-3xl font-bold">00</span><br>Dias</div>
+                    <div class="countdown-box"><span id="hours" class="text-3xl font-bold">00</span><br>Horas</div>
+                    <div class="countdown-box"><span id="minutes" class="text-3xl font-bold">00</span><br>Min</div>
+                    <div class="countdown-box"><span id="seconds" class="text-3xl font-bold">00</span><br>Seg</div>
+                 </div>
+            </section>
+
+            <section id="rsvp" class="card p-6 sm:p-8 text-center my-12">
+                <h3 class="text-2xl font-bold text-gray-800">A equipe do Ryder e do Guilherme espera por você!</h3>
+                <p class="text-lg text-gray-600 mt-4">Confirme sua presença até o dia 10 de Setembro para garantir que teremos bolo e brigadeiro para todos!</p>
+                <button id="rsvp-button" class="mt-6 bg-patrol-red text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-red-700 transition-transform transform hover:scale-105 text-xl">
+                    🐾 Confirmar Presença
+                </button>
+                <p id="copy-message" class="text-green-600 font-bold mt-4 opacity-0 transition-opacity">Número copiado para a área de transferência!</p>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const partyDate = new Date('2025-09-15T19:00:00').getTime();
+
+        const countdownInterval = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = partyDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = '<div class="text-3xl font-bold patrol-red">A festa já começou!</div>';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+        }, 1000);
+
+        function openMap() {
+            const address = 'Rua das Flores, 123, Campinas, SP';
+            window.open(`https://www.google.com/maps?q=${encodeURIComponent(address)}`, '_blank');
+        }
+
+        const rsvpButton = document.getElementById('rsvp-button');
+        rsvpButton.addEventListener('click', () => {
+            const phoneNumber = '19999999999';
+            const textArea = document.createElement('textarea');
+            textArea.value = phoneNumber;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                const copyMessage = document.getElementById('copy-message');
+                copyMessage.style.opacity = '1';
+                setTimeout(() => {
+                    copyMessage.style.opacity = '0';
+                }, 3000);
+            } catch (err) {
+                console.error('Não foi possível copiar o número: ', err);
+                alert('Não foi possível copiar. Por favor, copie o número manualmente: (19) 99999-9999');
+            }
+            document.body.removeChild(textArea);
+        });
+    </script>
+</body>
+</html>
